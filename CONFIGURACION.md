@@ -8,14 +8,14 @@ Para que la aplicación funcione correctamente, necesitas configurar las siguien
 
 Crea un archivo llamado `.env.local` en la raíz del proyecto con el siguiente contenido:
 
-```env
+\`\`\`env
 # Resend API Key - Obtén tu API key en https://resend.com
 RESEND_API_KEY=re_tu_api_key_aqui
 
 # Email configuration
 FROM_EMAIL=pedidos@tudominio.com
 TO_EMAIL=tu-email@gmail.com
-```
+\`\`\`
 
 ### 2. Configurar Resend
 
@@ -35,7 +35,7 @@ Si despliegas en Vercel, Netlify u otro servicio, configura estas variables en e
 
 ## Estructura del Proyecto
 
-```
+\`\`\`
 forma_nativa_catalogo/
 ├── app/
 │   ├── api/send-order/route.ts  # API para enviar pedidos
@@ -47,7 +47,7 @@ forma_nativa_catalogo/
 │   └── index.ts                # Interfaces TypeScript
 └── public/
     └── logo.png                # Logo de la marca
-```
+\`\`\`
 
 ## Funcionalidades
 
@@ -60,7 +60,7 @@ forma_nativa_catalogo/
 
 ## Comandos Disponibles
 
-```bash
+\`\`\`bash
 # Instalar dependencias
 npm install
 
@@ -72,4 +72,4 @@ npm run build
 
 # Iniciar en producción
 npm start
-```
+\`\`\`
