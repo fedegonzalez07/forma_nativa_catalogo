@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forma Nativa - Iluminación Sustentable & Diseño</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="logo.png" alt="Forma Nativa Logo" class="brand-logo">
+            </div>
+            <div class="nav-actions">
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                <button class="menu-btn" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <i class="fas fa-leaf"></i>
+                <span>Iluminación Sustentable</span>
+            </div>
+            <h1 class="hero-title">F<span class="orange-letter">o</span>rma Nativa</h1>
+            <p class="hero-description">
+                Creamos veladores y lámparas únicos con impresión 3D sustentable. Cada pieza combina diseño moderno con
+                materiales eco-friendly, iluminando tu hogar de forma responsable con el planeta.
+            </p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Nuestros Productos</h2>
+            <div class="category-filters">
+                <button class="filter-btn active" onclick="filterProducts('Todos')">Todos</button>
+                <button class="filter-btn" onclick="filterProducts('Veladores')">Veladores</button>
+                <button class="filter-btn" onclick="filterProducts('Lámparas')">Lámparas</button>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand">
+                <img src="logo.png" alt="Forma Nativa Logo" class="footer-logo">
+                <p class="footer-subtitle">Iluminación Sustentable & Diseño</p>
+            </div>
+            <div class="footer-text">
+                <p>© 2024 <span class="orange-text">Forma Nativa</span>. Todos los derechos reservados.</p>
+                <p>Diseñado con <span class="orange-text">💚</span> para un futuro más <span class="orange-text">sustentable</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Carrito de Compras</h3>
+                <button class="close-btn" onclick="toggleCart()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems"></div>
+                <div class="cart-total" id="cartTotal"></div>
+                <form id="orderForm" class="order-form" style="display: none;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nombre *</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono *</label>
+                            <input type="tel" name="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Dirección</label>
+                        <input type="text" name="address">
+                    </div>
+                    <div class="form-group">
+                        <label>Notas adicionales</label>
+                        <textarea name="notes" placeholder="Especificaciones especiales, colores preferidos, etc."></textarea>
+                    </div>
+                    <button type="submit" class="checkout-btn">🛒 Finalizar Compra</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Modal -->
+    <div class="modal" id="menuModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Menú</h3>
+                <button class="close-btn" onclick="toggleMenu()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="menu-options">
+                    <button class="menu-option" onclick="showConsultas()">Consultas</button>
+                    <button class="menu-option" onclick="showContacto()">Contacto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Consultas Modal -->
+    <div class="modal" id="consultasModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Consultas</h3>
+                <button class="close-btn" onclick="closeConsultas()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Envíanos tu consulta y te responderemos pronto</p>
+                <form action="https://formsubmit.co/alejandro.gon052130@gmail.com" method="POST" class="contact-form">
+                    <input type="hidden" name="_subject" value="💬 CONSULTA - Forma Nativa">
+                    <input type="hidden" name="_captcha" value="false">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Asunto</label>
+                        <input type="text" name="subject" placeholder="¿En qué podemos ayudarte?">
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje</label>
+                        <textarea name="message" placeholder="Escribe tu consulta aquí..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar Consulta</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contacto Modal -->
+    <div class="modal" id="contactoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Contacto</h3>
+                <button class="close-btn" onclick="closeContacto()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>alejandro.gon052130@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p>+54 9 11 1234-5678</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Ubicación</h4>
+                            <p>Buenos Aires, Argentina</p>
+                        </div>
+                    </div>
+                    <div class="contact-schedule">
+                        <h4>Horarios de Atención</h4>
+                        <p>Lunes a Viernes: 9:00 - 18:00</p>
+                        <p>Sábados: 10:00 - 14:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
